@@ -1,64 +1,119 @@
+﻿/* ===== MAIN CONTAINER ===== */
 .home-page {
   width: 100%;
-  min-width: 1440px;
-  min-height: 3124px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.home-page .plan-de-travail {
+/* ===== NAVBAR ===== */
+.home-page .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 1440px;
-  height: 795px;
-  aspect-ratio: 1.81;
-  object-fit: cover;
+  z-index: 100;
+  box-sizing: border-box;
 }
 
-.home-page .arrow {
-  position: absolute;
-  top: 463px;
-  left: 711px;
-  width: 16px;
-  height: 16px;
+.home-page .logo {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
 }
 
-.home-page .img {
+.home-page .logo img {
   width: 100%;
-  left: -2.21%;
-  height: 17px;
-  position: absolute;
-  top: 0;
-  aspect-ratio: 1;
+  height: 100%;
+  object-fit: contain;
 }
 
-.home-page .arrow-2 {
-  width: 75.00%;
-  left: 10.29%;
-  height: 13px;
+.home-page .navbar-2 {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 10px;
+}
+
+.home-page .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: var(--variable-collection-BG-color);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Hamburger button - hidden on desktop */
+.home-page .hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 101;
+}
+
+.home-page .hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: var(--variable-collection-BG-color);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ===== HERO SECTION ===== */
+.home-page .hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.home-page .plan-de-travail {
+  width: 100%;
+  height: auto;
+  max-height: 795px;
+  object-fit: cover;
+  display: block;
+}
+
+.home-page .hero-content {
   position: absolute;
-  top: 0;
-  aspect-ratio: 1;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .home-page .button {
   all: unset;
   box-sizing: border-box;
-  position: absolute;
-  top: 415px;
-  left: 634px;
   width: 170px;
   height: 50px;
-  border: 1px solid;
-  border-color: var(--variable-collection-BG-color);
+  border: 1px solid var(--variable-collection-BG-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .home-page .text-wrapper {
-  position: absolute;
-  width: 50.59%;
-  height: 36.00%;
-  top: 28.00%;
-  left: 25.29%;
   font-family: "Integral CF-DemiBold", Helvetica;
   font-weight: 700;
   color: #ffffff;
@@ -67,20 +122,39 @@
   line-height: normal;
 }
 
-.home-page .element {
-  position: absolute;
-  top: 881px;
-  left: 60px;
-  width: 1342px;
-  height: 367px;
-  display: flex;
-  gap: 57px;
+.home-page .arrow {
+  width: 16px;
+  height: 16px;
 }
 
-.home-page .element-first-world-cup {
-  margin-top: 49px;
-  width: 733px;
-  height: 228px;
+.home-page .img {
+  width: 100%;
+  height: auto;
+}
+
+/* ===== CONTENT SECTIONS (shared) ===== */
+.home-page .element,
+.home-page .div,
+.home-page .element-3,
+.home-page .element-4,
+.home-page .element-6 {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 40px 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Text blocks */
+.home-page .element-first-world-cup,
+.home-page .element-african,
+.home-page .element-victory-against,
+.home-page .p {
+  flex: 1;
+  min-width: 0;
   font-family: "Integral CF-Bold", Helvetica;
   font-weight: 400;
   color: #000000;
@@ -89,6 +163,7 @@
   line-height: normal;
 }
 
+/* Typography tokens */
 .home-page .span {
   font-weight: var(--h1-font-weight);
   font-family: var(--h1-font-family);
@@ -107,161 +182,211 @@
   line-height: var(--paragraph-line-height);
 }
 
-.home-page .element-2 {
-  width: 550px;
-  height: 367px;
-  aspect-ratio: 1.5;
-  object-fit: cover;
-}
-
-.home-page .div {
-  position: absolute;
-  top: 1754px;
-  left: 59px;
-  width: 1338px;
-  height: 367px;
-  display: flex;
-  gap: 53px;
-}
-
-.home-page .element-african {
-  margin-top: 71px;
-  width: 733px;
-  height: 206px;
-  font-family: "Integral CF-Bold", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 40px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.home-page .element-3 {
-  position: absolute;
-  top: 2627px;
-  left: 60px;
-  width: 1337px;
-  height: 367px;
-  display: flex;
-  gap: 52px;
-}
-
-.home-page .element-victory-against {
-  margin-top: 57px;
-  width: 733px;
-  height: 254px;
-  font-family: "Integral CF-Bold", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 40px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.home-page .element-4 {
-  position: absolute;
-  top: 1318px;
-  left: 60px;
-  width: 1342px;
-  height: 366px;
-  display: flex;
-  gap: 62px;
-}
-
+/* Section images */
+.home-page .element-2,
 .home-page .element-5 {
-  width: 550px;
-  height: 366px;
+  width: 45%;
+  max-width: 550px;
+  height: auto;
   aspect-ratio: 1.5;
   object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 4px;
 }
 
-.home-page .p {
-  margin-top: 56px;
-  width: 728px;
-  height: 254px;
-  font-family: "Integral CF-Bold", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 40px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.home-page .element-6 {
-  position: absolute;
-  top: 2191px;
-  left: 60px;
-  width: 1342px;
-  height: 366px;
-  display: flex;
-  gap: 62px;
-}
-
+/* ===== FOOTER ===== */
 .home-page .frame {
   display: flex;
-  width: 1440px;
-  height: 50px;
-  align-items: flex-start;
+  width: 100%;
   justify-content: flex-end;
-  gap: 10px;
-  padding: 5px 30px;
-  position: absolute;
-  top: 3074px;
-  left: calc(50.00% - 720px);
+  padding: 15px 30px;
+  box-sizing: border-box;
+  margin-top: auto;
 }
 
 .home-page .frame-2 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
-  padding: 10px;
-  position: relative;
-  flex: 0 0 auto;
-  margin-bottom: -2.00px;
-}
-
-.home-page .text-wrapper-3 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1.00px;
-  font-family: "Montserrat-Medium", Helvetica;
-  font-weight: 500;
-  color: var(--variable-collection-BG-color);
-  font-size: 18px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.home-page .navbar {
   display: flex;
-  width: 1440px;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.home-page .logo {
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-
-.home-page .logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.home-page .navbar-2 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   gap: 50px;
   padding: 10px;
-  position: relative;
-  flex: 0 0 auto;
+}
+
+/* ================================================
+   TABLET  (max-width: 1024px)
+   ================================================ */
+@media (max-width: 1024px) {
+  .home-page .navbar {
+    padding: 10px 20px;
+  }
+
+  .home-page .navbar-2 {
+    gap: 25px;
+  }
+
+  .home-page .text-wrapper-3 {
+    font-size: 15px;
+  }
+
+  .home-page .element,
+  .home-page .div,
+  .home-page .element-3,
+  .home-page .element-4,
+  .home-page .element-6 {
+    gap: 30px;
+    padding: 30px 40px;
+  }
+
+  .home-page .element-first-world-cup,
+  .home-page .element-african,
+  .home-page .element-victory-against,
+  .home-page .p {
+    font-size: 30px;
+  }
+
+  .home-page .span {
+    font-size: 30px;
+  }
+
+  .home-page .text-wrapper-2 {
+    font-size: 15px;
+  }
+}
+
+/* ================================================
+   MOBILE  (max-width: 768px)
+   ================================================ */
+@media (max-width: 768px) {
+  /* Show hamburger, hide nav links by default */
+  .home-page .hamburger {
+    display: flex;
+  }
+
+  .home-page .navbar-2 {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    padding: 20px 40px;
+    gap: 20px;
+    border-radius: 0 0 0 8px;
+  }
+
+  .home-page .navbar-2.active {
+    display: flex;
+  }
+
+  .home-page .navbar {
+    padding: 10px 15px;
+  }
+
+  .home-page .logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Stack content sections vertically */
+  .home-page .element,
+  .home-page .div,
+  .home-page .element-3,
+  .home-page .element-4,
+  .home-page .element-6 {
+    flex-direction: column;
+    padding: 25px 20px;
+    gap: 20px;
+  }
+
+  .home-page .element-2,
+  .home-page .element-5 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home-page .element-first-world-cup,
+  .home-page .element-african,
+  .home-page .element-victory-against,
+  .home-page .p {
+    font-size: 24px;
+    width: 100%;
+  }
+
+  .home-page .span {
+    font-size: 24px;
+  }
+
+  .home-page .text-wrapper-2 {
+    font-size: 14px;
+  }
+
+  .home-page .button {
+    width: 140px;
+    height: 42px;
+  }
+
+  .home-page .text-wrapper {
+    font-size: 13px;
+  }
+
+  .home-page .frame {
+    justify-content: center;
+  }
+
+  .home-page .frame-2 {
+    gap: 30px;
+  }
+}
+
+/* ================================================
+   SMALL MOBILE  (max-width: 480px)
+   ================================================ */
+@media (max-width: 480px) {
+  .home-page .element-first-world-cup,
+  .home-page .element-african,
+  .home-page .element-victory-against,
+  .home-page .p {
+    font-size: 20px;
+  }
+
+  .home-page .span {
+    font-size: 20px;
+  }
+
+  .home-page .text-wrapper-2 {
+    font-size: 13px;
+  }
+
+  .home-page .element,
+  .home-page .div,
+  .home-page .element-3,
+  .home-page .element-4,
+  .home-page .element-6 {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .home-page .navbar {
+    padding: 8px 10px;
+  }
+
+  .home-page .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .home-page .button {
+    width: 120px;
+    height: 38px;
+  }
+
+  .home-page .text-wrapper {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  .home-page .frame-2 {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
