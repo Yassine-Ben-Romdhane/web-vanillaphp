@@ -106,6 +106,11 @@
         <img class="element-2" src="img/2022-1.jpg" />
       </div>
 
+      <!-- 2026 Banner -->
+      <div class="banner-2026">
+        <h2 class="banner-2026__title">2026 &ndash; HISTORY TO BE MADE...</h2>
+      </div>
+
       <!-- Footer -->
       <div class="frame">
         <div class="frame-2">
@@ -114,6 +119,16 @@
         </div>
       </div>
     </div>
+
+    <!-- Scroll indicator dots -->
+    <nav class="scroll-indicator" aria-label="Section navigation">
+      <div class="scroll-indicator__track"></div>
+      <button class="scroll-indicator__dot active" data-target="0" aria-label="1978"></button>
+      <button class="scroll-indicator__dot" data-target="1" aria-label="1996"></button>
+      <button class="scroll-indicator__dot" data-target="2" aria-label="2004"></button>
+      <button class="scroll-indicator__dot" data-target="3" aria-label="2018"></button>
+      <button class="scroll-indicator__dot" data-target="4" aria-label="2022"></button>
+    </nav>
 
     <script>
       // Hamburger menu toggle
@@ -142,6 +157,50 @@
       document.querySelectorAll('.history-section').forEach(function (el) {
         observer.observe(el);
       });
+
+      // Scroll indicator logic
+      (function () {
+        var sections = document.querySelectorAll('.history-section');
+        var dots = document.querySelectorAll('.scroll-indicator__dot');
+        var indicator = document.querySelector('.scroll-indicator');
+        var hero = document.querySelector('.hero');
+
+        // Click a dot → scroll to that section
+        dots.forEach(function (dot) {
+          dot.addEventListener('click', function () {
+            var idx = parseInt(this.getAttribute('data-target'));
+            sections[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          });
+        });
+
+        // Update active dot + show/hide indicator on scroll
+        function updateIndicator() {
+          var heroBottom = hero.offsetTop + hero.offsetHeight;
+          var scrollY = window.scrollY || window.pageYOffset;
+
+          // Hide indicator when in hero section
+          if (scrollY < heroBottom - 200) {
+            indicator.classList.remove('visible');
+            return;
+          }
+          indicator.classList.add('visible');
+
+          var activeIdx = 0;
+          sections.forEach(function (sec, i) {
+            var rect = sec.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.5) {
+              activeIdx = i;
+            }
+          });
+
+          dots.forEach(function (d, i) {
+            d.classList.toggle('active', i === activeIdx);
+          });
+        }
+
+        window.addEventListener('scroll', updateIndicator, { passive: true });
+        updateIndicator();
+      })();
     </script>
   </body>
 </html>

@@ -257,6 +257,28 @@
   animation: revealFromRight 0.8s ease forwards;
 }
 
+/* 2026 BANNER */
+.home-page .banner-2026 {
+  width: 100%;
+  padding: 80px 40px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.home-page .banner-2026__title {
+  font-family: var(--h1-font-family);
+  font-weight: 700;
+  font-size: 64px;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  color: #81000B;
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
 /* FOOTER */
 .home-page .frame {
   display: flex;
@@ -270,6 +292,56 @@
   background-size: 108px 108px;
 }
 
+/*  SCROLL INDICATOR  */
+.scroll-indicator {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28px;
+  gap: 20px;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.scroll-indicator.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-indicator__track {
+  display: none;
+}
+
+.scroll-indicator__dot {
+  all: unset;
+  position: relative;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease, width 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-indicator__dot:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.scroll-indicator__dot.active {
+  width: 24px;
+  height: 10px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
 .home-page .frame-2 {
   display: flex;
   align-items: center;
@@ -279,6 +351,14 @@
 
 /*TABLET  (max-width: 1024px)*/
 @media (max-width: 1024px) {
+  .home-page .banner-2026 {
+    padding: 60px 30px;
+  }
+
+  .home-page .banner-2026__title {
+    font-size: 48px;
+  }
+
   .home-page .navbar {
     padding: 10px 20px;
   }
@@ -316,10 +396,13 @@
   }
 }
 
-/*===========================================
-   MOBILE  (max-width: 768px)
-  =========================================== */
+/*MOBILE  (max-width: 768px)*/
 @media (max-width: 768px) {
+  /* Hide scroll indicator on mobile */
+  .scroll-indicator {
+    display: none;
+  }
+
   /* Show hamburger, hide nav links by default */
   .home-page .hamburger {
     display: flex;
@@ -353,10 +436,16 @@
   /* Stack content sections vertically */
   .home-page .element,
   .home-page .div,
-  .home-page .element-3,
+  .home-page .element-3 {
+    flex-direction: column;
+    padding: 25px 20px;
+    gap: 20px;
+  }
+
+  /* Reverse order for sections where image precedes text in HTML */
   .home-page .element-4,
   .home-page .element-6 {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding: 25px 20px;
     gap: 20px;
   }
@@ -392,18 +481,31 @@
     font-size: 13px;
   }
 
+  .home-page .text-wrapper-3 {
+    font-size: 14px;
+  }
+
   .home-page .frame {
-    justify-content: center;
+    justify-content: flex-end;
+    padding: 0px 20px;
+    background-size: 70px 70px;
   }
 
   .home-page .frame-2 {
-    gap: 30px;
+    gap: 20px;
+    padding: 8px;
+  }
+
+  .home-page .banner-2026 {
+    padding: 50px 20px;
+  }
+
+  .home-page .banner-2026__title {
+    font-size: 36px;
   }
 }
 
-/*===========================================
-   SMALL MOBILE  (max-width: 480px)
-  =========================================== */
+/*SMALL MOBILE  (max-width: 480px)*/
 @media (max-width: 480px) {
   .home-page .element-first-world-cup,
   .home-page .element-african,
@@ -422,7 +524,11 @@
 
   .home-page .element,
   .home-page .div,
-  .home-page .element-3,
+  .home-page .element-3 {
+    padding: 15px;
+    gap: 15px;
+  }
+
   .home-page .element-4,
   .home-page .element-6 {
     padding: 15px;
@@ -448,9 +554,25 @@
     letter-spacing: 1.5px;
   }
 
+  .home-page .text-wrapper-3 {
+    font-size: 10px;
+  }
+
+  .home-page .frame {
+    padding: 0px 15px;
+    background-size: 55px 55px;
+  }
+
   .home-page .frame-2 {
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 15px;
+    padding: 6px;
+  }
+
+  .home-page .banner-2026 {
+    padding: 40px 15px;
+  }
+
+  .home-page .banner-2026__title {
+    font-size: 26px;
   }
 }
