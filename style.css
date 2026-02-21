@@ -5,6 +5,9 @@
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
+  background-image: url('img/Pattern.svg');
+  background-repeat: repeat;
+  background-size: 108px 108px;
 }
 
 /* ===== NAVBAR ===== */
@@ -79,13 +82,13 @@
 .home-page .hero {
   position: relative;
   width: 100%;
+  height: 100vh;
   overflow: hidden;
 }
 
 .home-page .plan-de-travail {
   width: 100%;
-  height: auto;
-  max-height: 795px;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -202,6 +205,9 @@
   padding: 15px 30px;
   box-sizing: border-box;
   margin-top: auto;
+  background-image: url('img/Pattern2.svg');
+  background-repeat: repeat;
+  background-size: 108px 108px;
 }
 
 .home-page .frame-2 {
