@@ -1,4 +1,30 @@
-﻿/* ===== MAIN CONTAINER ===== */
+﻿/* KEYFRAMES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(10px); }
+}
+
+@keyframes revealFromLeft {
+  from { opacity: 0; transform: translateX(-80px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes revealFromRight {
+  from { opacity: 0; transform: translateX(80px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* MAIN CONTAINER */
 .home-page {
   width: 100%;
   display: flex;
@@ -10,7 +36,7 @@
   background-size: 108px 108px;
 }
 
-/* ===== NAVBAR ===== */
+/* NAVBAR */
 .home-page .navbar {
   display: flex;
   align-items: center;
@@ -22,6 +48,7 @@
   left: 0;
   z-index: 100;
   box-sizing: border-box;
+  animation: fadeIn 0.8s ease backwards;
 }
 
 .home-page .logo {
@@ -46,14 +73,14 @@
 .home-page .text-wrapper-3 {
   position: relative;
   width: fit-content;
-  font-family: "Montserrat-Medium", Helvetica;
-  font-weight: 500;
+  font-family: var(--paragraph-font-family);
   color: var(--variable-collection-BG-color);
   font-size: 18px;
-  letter-spacing: 0;
+  letter-spacing: .15em;
   line-height: normal;
   white-space: nowrap;
   cursor: pointer;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* Hamburger button - hidden on desktop */
@@ -78,7 +105,7 @@
   transition: 0.3s;
 }
 
-/* ===== HERO SECTION ===== */
+/* HERO SECTION */
 .home-page .hero {
   position: relative;
   width: 100%;
@@ -114,28 +141,32 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  animation: fadeInUp 0.8s ease 0.3s backwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .home-page .text-wrapper {
-  font-family: "Integral CF-DemiBold", Helvetica;
-  font-weight: 700;
+  font-family: "Integral CF", Helvetica;
+  font-weight: 600;
   color: #ffffff;
   font-size: 15px;
-  letter-spacing: 2.25px;
+  letter-spacing: 0.15em;
   line-height: normal;
 }
 
 .home-page .arrow {
   width: 16px;
   height: 16px;
+  animation: fadeInUp 0.8s ease 0.5s backwards, bounce 1.8s ease-in-out 1.5s infinite;
 }
 
 .home-page .img {
   width: 100%;
   height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* ===== CONTENT SECTIONS (shared) ===== */
+/* CONTENT SECTIONS (shared) */
 .home-page .element,
 .home-page .div,
 .home-page .element-3,
@@ -197,12 +228,41 @@
   border-radius: 4px;
 }
 
-/* ===== FOOTER ===== */
+/* HOVER EFFECTS */
+.home-page .text-wrapper-3:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.home-page .button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.home-page .arrow:hover .img {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+/* SCROLL REVEAL */
+.history-section {
+  opacity: 0;
+}
+
+.history-section.reveal-left {
+  animation: revealFromLeft 0.8s ease forwards;
+}
+
+.history-section.reveal-right {
+  animation: revealFromRight 0.8s ease forwards;
+}
+
+/* FOOTER */
 .home-page .frame {
   display: flex;
   width: 100%;
   justify-content: flex-end;
-  padding: 15px 30px;
+  padding: 0px 30px;
   box-sizing: border-box;
   margin-top: auto;
   background-image: url('img/Pattern2.svg');
@@ -217,9 +277,7 @@
   padding: 10px;
 }
 
-/* ================================================
-   TABLET  (max-width: 1024px)
-   ================================================ */
+/*TABLET  (max-width: 1024px)*/
 @media (max-width: 1024px) {
   .home-page .navbar {
     padding: 10px 20px;
@@ -258,9 +316,9 @@
   }
 }
 
-/* ================================================
+/*===========================================
    MOBILE  (max-width: 768px)
-   ================================================ */
+  =========================================== */
 @media (max-width: 768px) {
   /* Show hamburger, hide nav links by default */
   .home-page .hamburger {
@@ -343,9 +401,9 @@
   }
 }
 
-/* ================================================
+/*===========================================
    SMALL MOBILE  (max-width: 480px)
-   ================================================ */
+  =========================================== */
 @media (max-width: 480px) {
   .home-page .element-first-world-cup,
   .home-page .element-african,

@@ -39,7 +39,7 @@
       </div>
 
       <!-- 1978 -->
-      <div class="element">
+      <div class="element history-section" data-reveal="left">
         <p class="element-first-world-cup">
           <span class="span">1978 &ndash; First World Cup<br /><br /></span>
           <span class="text-wrapper-2"
@@ -53,7 +53,7 @@
       </div>
 
       <!-- 1996 -->
-      <div class="element-4">
+      <div class="element-4 history-section" data-reveal="right">
         <img class="element-5" src="img/1996-1.jpg" />
         <p class="p">
           <span class="span">1996 &ndash; Africa Cup of Nations Finalist<br /><br /></span>
@@ -67,7 +67,7 @@
       </div>
 
       <!-- 2004 -->
-      <div class="div">
+      <div class="div history-section" data-reveal="left">
         <p class="element-african">
           <span class="span">2004 &ndash; African Champions<br /><br /></span>
           <span class="text-wrapper-2"
@@ -81,7 +81,7 @@
       </div>
 
       <!-- 2018 -->
-      <div class="element-6">
+      <div class="element-6 history-section" data-reveal="right">
         <img class="element-5" src="img/2018-1.jpg" />
         <p class="p">
           <span class="span">2018 &ndash; Return to the World Cup<br /><br /></span>
@@ -94,7 +94,7 @@
       </div>
 
       <!-- 2022 -->
-      <div class="element-3">
+      <div class="element-3 history-section" data-reveal="left">
         <p class="element-victory-against">
           <span class="span">2022 &ndash; Victory against France<br /><br /></span>
           <span class="text-wrapper-2"
@@ -116,8 +116,31 @@
     </div>
 
     <script>
+      // Hamburger menu toggle
       document.querySelector('.hamburger').addEventListener('click', function () {
         document.querySelector('.navbar-2').classList.toggle('active');
+      });
+
+      // Smooth scroll past hero on HISTORY button click
+      document.querySelector('.button').addEventListener('click', function () {
+        var hero = document.querySelector('.hero');
+        var target = hero.offsetTop + hero.offsetHeight;
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      });
+
+      // Scroll-reveal for history sections
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var dir = entry.target.getAttribute('data-reveal');
+            entry.target.classList.add(dir === 'right' ? 'reveal-right' : 'reveal-left');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.history-section').forEach(function (el) {
+        observer.observe(el);
       });
     </script>
   </body>
