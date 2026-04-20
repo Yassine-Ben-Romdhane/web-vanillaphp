@@ -72,7 +72,7 @@
   line-height: normal;
   white-space: nowrap;
   cursor: pointer;
-  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .team-page .text-wrapper-3:hover {
