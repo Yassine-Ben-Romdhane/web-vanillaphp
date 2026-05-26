@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" fill="none">
+  <!-- Head -->
+  <circle cx="100" cy="55" r="32" fill="rgba(255,255,255,0.18)"/>
+  <!-- Neck -->
+  <rect x="88" y="83" width="24" height="18" rx="4" fill="rgba(255,255,255,0.18)"/>
+  <!-- Body / torso -->
+  <path d="M55 105 Q60 98 88 96 L100 120 L112 96 Q140 98 145 105 L152 175 L48 175 Z" fill="rgba(255,255,255,0.18)"/>
+  <!-- Left arm -->
+  <path d="M55 105 Q38 120 34 160 Q38 165 44 162 Q52 130 62 120 Z" fill="rgba(255,255,255,0.15)"/>
+  <!-- Right arm -->
+  <path d="M145 105 Q162 120 166 160 Q162 165 156 162 Q148 130 138 120 Z" fill="rgba(255,255,255,0.15)"/>
+  <!-- Left leg -->
+  <path d="M68 175 L60 240 Q68 244 76 240 L84 180 Z" fill="rgba(255,255,255,0.15)"/>
+  <!-- Right leg -->
+  <path d="M132 175 L140 240 Q132 244 124 240 L116 180 Z" fill="rgba(255,255,255,0.15)"/>
+</svg>

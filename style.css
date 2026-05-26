@@ -134,6 +134,8 @@
 .home-page .button {
   all: unset;
   box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
   width: 170px;
   height: 50px;
   border: 1px solid var(--variable-collection-BG-color);
@@ -142,7 +144,16 @@
   justify-content: center;
   cursor: pointer;
   animation: fadeInUp 0.8s ease 0.3s backwards;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.home-page .button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.12);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .home-page .text-wrapper {
@@ -235,8 +246,13 @@
 }
 
 .home-page .button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.2);
+  transform: scale(1.06);
+  box-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.9);
+}
+
+.home-page .button:hover::before {
+  transform: translateY(0);
 }
 
 .home-page .arrow:hover .img {
@@ -273,10 +289,31 @@
   line-height: 1.2;
   color: #81000B;
   text-transform: uppercase;
-  margin: 0;
+  margin: 0 0 20px;
   position: relative;
   z-index: 1;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+.home-page .banner-2026__sub {
+  margin: 0;
+}
+
+.home-page .banner-2026__sub a {
+  font-family: var(--paragraph-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #81000B;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(129,0,11,0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.home-page .banner-2026__sub a:hover {
+  color: #e70013;
+  border-color: #e70013;
 }
 
 /* FOOTER */
@@ -338,8 +375,8 @@
   width: 24px;
   height: 10px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.6);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  background: var(--variable-collection-primary-color);
+  box-shadow: 0 0 10px rgba(231, 0, 19, 0.5), 0 0 20px rgba(231, 0, 19, 0.2);
 }
 
 .home-page .frame-2 {
