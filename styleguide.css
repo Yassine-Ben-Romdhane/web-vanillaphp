@@ -39,4 +39,24 @@
   --variable-collection-secondary-color: rgba(129, 0, 11, 1);
   --variable-collection-BG-color: rgba(243, 243, 243, 1);
   --variable-collection-accent-color: rgba(7, 28, 7, 1);
+
+  /* Extended design tokens */
+  --color-gold: #D4AF37;
+  --color-gold-light: #F0D060;
+  --color-surface: #FAFAFA;
+  --color-ink: #0a0a0a;
+  --color-ink-muted: rgba(0,0,0,0.45);
+
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.07);
+  --shadow-card-hover: 0 24px 56px rgba(0,0,0,0.14);
+  --shadow-red: 0 8px 32px rgba(231,0,19,0.22);
+  --shadow-red-strong: 0 12px 40px rgba(231,0,19,0.35);
+
+  --gradient-red: linear-gradient(135deg, #e70013, #81000B);
+  --gradient-dark-red: linear-gradient(135deg, #0a0a0a 0%, #3a0005 40%, #81000B 100%);
+  --gradient-hero-overlay: linear-gradient(to bottom, transparent 60%, rgba(10,10,10,0.6) 100%);
+
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s ease;
 }
