@@ -17,7 +17,9 @@ function current_user(): array {
         'id'         => $_SESSION['user_id']         ?? null,
         'first_name' => $_SESSION['user_first_name'] ?? '',
         'last_name'  => $_SESSION['user_last_name']  ?? '',
-        'email'      => $_SESSION['user_email']      ?? '',
+        'email'      => $_SESSION['user_email'] 
+        
+             ?? '',
         'phone'      => $_SESSION['user_phone']      ?? '',
     ];
 }
@@ -51,7 +53,19 @@ function safe_redirect(string $url, string $default = 'index.php'): string {
         'index.php', 'store.php', 'checkout.php',
         'book.php', 'team.php', 'stats.php',
     ];
-    $path = parse_url($url, PHP_URL_PATH);
+    // Disallow absolute URLs (scheme/host) to prevent open-redirect to external sites
+    $parts = parse_url($url);
+    if ($parts === false) {
+        return $default;
+    }
+    // If the URL contains a scheme or host, reject it
+    if (!empty($parts['scheme']) || !empty($parts['host'])) {
+        return $default;
+    }
+
+    // Use the path component (or the raw value) to determine target
+    $path = $parts['path'] ?? $url;
     $base = basename((string) $path);
+
     return in_array($base, $allowed, true) ? $url : $default;
 }

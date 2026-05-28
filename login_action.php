@@ -2,6 +2,12 @@
 require_once 'auth.php';
 require_once 'db.php';
 
+// If the DB connection failed, redirect with a friendly error
+if (empty($pdo)) {
+    header('Location: login.php?tab=login&error=db_error');
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: login.php');
     exit;
@@ -18,7 +24,7 @@ if (!$email || !$password) {
     exit;
 }
 
-$stmt = $pdo->prepare('SELECT id, first_name, last_name, email, phone, password_hash FROM users WHERE email = :email LIMIT 1');
+ $stmt = $pdo->prepare('SELECT id, first_name, last_name, email, password_hash FROM users WHERE email = :email LIMIT 1');
 $stmt->execute([':email' => $email]);
 $user = $stmt->fetch();
 
@@ -33,7 +39,7 @@ $_SESSION['user_id']         = $user['id'];
 $_SESSION['user_first_name'] = $user['first_name'];
 $_SESSION['user_last_name']  = $user['last_name'] ?? '';
 $_SESSION['user_email']      = $user['email'];
-$_SESSION['user_phone']      = $user['phone'] ?? '';
+ $_SESSION['user_phone']      = '';
 
 header('Location: ' . $redirect);
 exit;
