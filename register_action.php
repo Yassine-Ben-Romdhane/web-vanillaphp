@@ -2,6 +2,12 @@
 require_once 'auth.php';
 require_once 'db.php';
 
+// If the DB connection failed, redirect with a friendly error
+if (empty($pdo)) {
+    header('Location: login.php?tab=register&error=db_error');
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: login.php?tab=register');
     exit;
