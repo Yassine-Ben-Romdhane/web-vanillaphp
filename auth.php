@@ -40,6 +40,8 @@ function csrf_token(): string {
 }
 
 function verify_csrf(): void {
+    // Verify token
+
     $token = $_POST['csrf_token'] ?? '';
     if (!hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
         http_response_code(403);
