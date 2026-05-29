@@ -13,6 +13,11 @@ $prefill_last  = htmlspecialchars($u['last_name']  ?? '');
 $prefill_email = htmlspecialchars($u['email']      ?? '');
 $prefill_phone = htmlspecialchars($u['phone']      ?? '');
 
+if (!$pdo) {
+    header('Location: error_db.php');
+    exit;
+}
+
 // Handle booking submission
 $booking_success = false;
 $booking_error   = '';
@@ -29,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['match_id'])) {
 
     if (!$first_name || !$last_name || !$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $booking_error = 'Please fill in all required fields with a valid email.';
-    } elseif ($pdo) {
+    } else {
         // Get match price & check seats
         $mStmt = $pdo->prepare("SELECT * FROM matches WHERE id = ?");
         $mStmt->execute([$match_id]);
@@ -59,27 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['match_id'])) {
                 $booking_error = 'Booking failed. Please try again.';
             }
         }
-    } else {
-        $booking_error = 'Database unavailable. Please try again later.';
     }
 }
 
 // Fetch upcoming matches
-$matches = [];
-if ($pdo) {
-    $stmt = $pdo->query("SELECT * FROM matches WHERE match_date > NOW() ORDER BY match_date ASC");
-    $matches = $stmt->fetchAll();
-}
+$stmt = $pdo->query("SELECT * FROM matches WHERE match_date > NOW() ORDER BY match_date ASC");
+$matches = $stmt->fetchAll();
 
 if (!$matches) {
-    // Fallback fixtures
-    $matches = [
-        ['id'=>1,'home_team'=>'Tunisia','away_team'=>'Austria',      'match_date'=>'2026-06-01 19:45:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'Friendly','available_seats'=>1200,'price_per_ticket'=>30.00,'opponent_flag'=>'🇦🇹'],
-        ['id'=>2,'home_team'=>'Tunisia','away_team'=>'Belgium',      'match_date'=>'2026-06-06 14:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'Friendly','available_seats'=>1500,'price_per_ticket'=>25.00,'opponent_flag'=>'🇧🇪'],
-        ['id'=>3,'home_team'=>'Tunisia','away_team'=>'Sweden',       'match_date'=>'2026-06-15 03:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'World Cup - Group F','available_seats'=>900, 'price_per_ticket'=>20.00,'opponent_flag'=>'🇸🇪'],
-        ['id'=>4,'home_team'=>'Tunisia','away_team'=>'Japan',        'match_date'=>'2026-06-21 05:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'World Cup - Group F','available_seats'=>2000,'price_per_ticket'=>35.00,'opponent_flag'=>'🇯🇵'],
-        ['id'=>5,'home_team'=>'Tunisia','away_team'=>'Netherlands',  'match_date'=>'2026-06-26 00:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'World Cup - Group F','available_seats'=>2500,'price_per_ticket'=>40.00,'opponent_flag'=>'🇳🇱'],
-    ];
+    $matches = []; // If DB is empty but connected
 }
 ?>
 
