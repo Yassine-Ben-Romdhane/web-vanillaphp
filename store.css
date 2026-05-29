@@ -320,118 +320,45 @@
 
 /* Product image visuals (CSS-drawn since no product photos) */
 .product-img--home-jersey {
-  background: linear-gradient(160deg, #e70013 0%, #81000B 60%, #3a0005 100%);
-  position: relative;
-}
-.product-img--home-jersey::after {
-  content: '';
-  position: absolute;
-  inset: 15%;
-  border: 3px solid rgba(255,255,255,0.25);
-  border-radius: 60% 60% 40% 40%;
-}
-.product-img--home-jersey::before {
-  content: '10';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--h1-font-family);
-  font-size: 64px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.15);
-  letter-spacing: 0;
+  background-image: url('img/items/homekit.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .product-img--away-jersey {
-  background: linear-gradient(160deg, #f3f3f3 0%, #d0d0d0 60%, #aaaaaa 100%);
-}
-.product-img--away-jersey::after {
-  content: '';
-  position: absolute;
-  inset: 15%;
-  border: 3px solid rgba(129,0,11,0.2);
-  border-radius: 60% 60% 40% 40%;
-}
-.product-img--away-jersey::before {
-  content: '10';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--h1-font-family);
-  font-size: 64px;
-  font-weight: 700;
-  color: rgba(129,0,11,0.1);
-  letter-spacing: 0;
+  background-image: url('img/items/awaykit.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .product-img--training {
-  background: linear-gradient(135deg, #1a1a1a 0%, #3a0005 100%);
-}
-.product-img--training::before {
-  content: 'CE';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--h1-font-family);
-  font-size: 56px;
-  font-weight: 700;
-  color: rgba(231,0,19,0.3);
-  letter-spacing: 0.05em;
+  background-image: url('img/items/trainingtop.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .product-img--cap {
-  background: linear-gradient(135deg, #81000B 0%, #e70013 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.product-img--cap::before {
-  content: '';
-  position: absolute;
-  width: 60%;
-  height: 35%;
-  top: 30%;
-  left: 20%;
-  background: rgba(0,0,0,0.3);
-  border-radius: 50% 50% 0 0;
-}
-.product-img--cap::after {
-  content: '';
-  position: absolute;
-  width: 75%;
-  height: 8%;
-  top: 62%;
-  left: 12.5%;
-  background: rgba(0,0,0,0.2);
-  border-radius: 0 0 4px 4px;
+  background-image: url('img/items/eaglescap.webp');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .product-img--scarf {
-  background: repeating-linear-gradient(
-    90deg,
-    #e70013 0px, #e70013 40px,
-    #fff    40px, #fff    80px,
-    #1a1a1a 80px, #1a1a1a 120px,
-    #fff    120px, #fff   160px
-  );
+  background-image: url('img/items/wcscarf.webp');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .product-img--shorts {
-  background: linear-gradient(160deg, #1a1a1a 0%, #333 60%, #81000B 100%);
-}
-.product-img--shorts::before {
-  content: '';
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45%;
-  height: 50%;
-  background: rgba(255,255,255,0.05);
-  border-radius: 0 0 30px 30px;
+  background-image: url('img/items/trainingshorts.jpeg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Hover overlay */

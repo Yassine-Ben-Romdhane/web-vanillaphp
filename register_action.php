@@ -63,7 +63,9 @@ try {
 session_regenerate_id(true);
 $_SESSION['user_id']         = $new_id;
 $_SESSION['user_first_name'] = $first_name;
+$_SESSION['user_last_name']  = $last_name;
 $_SESSION['user_email']      = $email;
+$_SESSION['user_phone']      = '';
 
 header('Location: ' . $redirect);
 exit;

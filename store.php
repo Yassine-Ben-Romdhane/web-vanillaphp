@@ -15,12 +15,13 @@ if ($pdo) {
     $products = $stmt->fetchAll();
 } else {
     $products = [
-        ['name' => "Home Jersey\n2024", 'price' => 89.99, 'category' => 'jersey', 'badge' => 'NEW', 'img_class' => 'product-img--jersey-home', 'year' => '2024'],
-        ['name' => "Away Jersey\n2024", 'price' => 89.99, 'category' => 'jersey', 'badge' => '', 'img_class' => 'product-img--jersey-away', 'year' => '2024'],
+        ['name' => "Home Jersey\n2024", 'price' => 89.99, 'category' => 'jersey', 'badge' => 'NEW', 'img_class' => 'product-img--home-jersey', 'year' => '2024'],
+        ['name' => "Away Jersey\n2024", 'price' => 89.99, 'category' => 'jersey', 'badge' => '', 'img_class' => 'product-img--away-jersey', 'year' => '2024'],
         ['name' => "Training Kit\n2024", 'price' => 59.99, 'category' => 'training', 'badge' => '', 'img_class' => 'product-img--training', 'year' => null],
         ['name' => "Eagles Cap", 'price' => 29.99, 'category' => 'accessories', 'badge' => '', 'img_class' => 'product-img--cap', 'year' => null],
         ['name' => "Scarf", 'price' => 19.99, 'category' => 'accessories', 'badge' => '', 'img_class' => 'product-img--scarf', 'year' => null],
         ['name' => "Retro Jersey\n1978", 'price' => 79.99, 'category' => 'jersey', 'badge' => 'LIMITED', 'img_class' => 'product-img--jersey-retro', 'year' => '1978'],
+        ['name' => "Training Shorts", 'price' => 39.99, 'category' => 'training', 'badge' => '', 'img_class' => 'product-img--shorts', 'year' => null],
     ];
 }
 ?>

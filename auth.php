@@ -51,7 +51,7 @@ function verify_csrf(): void {
 function safe_redirect(string $url, string $default = 'index.php'): string {
     $allowed = [
         'index.php', 'store.php', 'checkout.php',
-        'book.php', 'team.php', 'stats.php',
+        'book.php', 'team.php',
     ];
     // Disallow absolute URLs (scheme/host) to prevent open-redirect to external sites
     $parts = parse_url($url);
