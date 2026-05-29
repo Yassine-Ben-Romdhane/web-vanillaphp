@@ -37,22 +37,22 @@ CREATE TABLE IF NOT EXISTS players (
 );
 
 INSERT INTO players (number, name, position, club, age, caps, img_class, is_captain) VALUES
-(1,  'Aymen Dahmen',           'GK',  'Burnley FC',          28, 41,  'player-img--gk1',  FALSE),
-(16, 'Farouk Ben Mustapha',    'GK',  'Espérance ST',        35, 74,  'player-img--gk2',  FALSE),
-(23, 'Moez Ben Cherifia',      'GK',  'CA Bizertin',         26, 7,   'player-img--gk3',  FALSE),
-(2,  'Mohamed Dräger',         'DEF', 'Sporting CP',         27, 55,  'player-img--def1', FALSE),
-(3,  'Montassar Talbi',        'DEF', 'Lorient FC',          24, 32,  'player-img--def2', FALSE),
-(5,  'Nader Ghandri',          'DEF', 'AEK Athens',          29, 43,  'player-img--def3', FALSE),
-(6,  'Dylan Bronn',            'DEF', 'Salernitana',         28, 37,  'player-img--def4', FALSE),
-(12, 'Wajdi Kechrida',         'DEF', 'Espérance ST',        30, 61,  'player-img--def5', FALSE),
-(4,  'Ellyes Skhiri',          'MID', 'Eintracht Frankfurt', 29, 71,  'player-img--mid1', FALSE),
-(8,  'Aïssa Laïdouni',         'MID', 'Union Berlin',        26, 51,  'player-img--mid2', FALSE),
-(14, 'Hannibal Mejbri',        'MID', 'Sevilla FC',          21, 22,  'player-img--mid3', FALSE),
-(17, 'Ferjani Sassi',          'MID', 'Al-Duhail SC',        33, 83,  'player-img--mid4', FALSE),
-(7,  'Wahbi Khazri',           'FWD', 'Al-Qadsiah',          33, 97,  'player-img--fwd1', TRUE),
-(9,  'Youssef Msakni',         'FWD', 'Al-Arabi SC',         34, 113, 'player-img--fwd2', FALSE),
-(10, 'Seifeddine Jaziri',      'FWD', 'Antalyaspor',         31, 59,  'player-img--fwd3', FALSE),
-(11, 'Taha Yassine Khenissi',  'FWD', 'CS Sfaxien',          32, 68,  'player-img--fwd4', FALSE);
+(1,  'Aymen Dahmen',           'GK',  'Burnley FC',          28, 41,  'player-img--gk1-dahmen',  FALSE),
+(16, 'Farouk Ben Mustapha',    'GK',  'Espérance ST',        35, 74,  'player-img--gk2-ben-mustapha',  FALSE),
+(23, 'Moez Ben Cherifia',      'GK',  'CA Bizertin',         26, 7,   'player-img--gk3-ben-cherifia',  FALSE),
+(2,  'Mohamed Dräger',         'DEF', 'Sporting CP',         27, 55,  'player-img--def1-talbi', FALSE), -- Placeholder mapping
+(3,  'Montassar Talbi',        'DEF', 'Lorient FC',          24, 32,  'player-img--def1-talbi', FALSE),
+(5,  'Nader Ghandri',          'DEF', 'AEK Athens',          29, 43,  'player-img--def3-rekik', FALSE), -- Mapping to existing rekik
+(6,  'Dylan Bronn',            'DEF', 'Salernitana',         28, 37,  'player-img--def2-bronn', FALSE),
+(12, 'Wajdi Kechrida',         'DEF', 'Espérance ST',        30, 61,  'player-img--def4-arous', FALSE), -- Placeholder mapping
+(4,  'Ellyes Skhiri',          'MID', 'Eintracht Frankfurt', 29, 71,  'player-img--mid1-skhiri', FALSE),
+(8,  'Aïssa Laïdouni',         'MID', 'Union Berlin',        26, 51,  'player-img--mid2-laidouni', FALSE),
+(14, 'Hannibal Mejbri',        'MID', 'Sevilla FC',          21, 22,  'player-img--mid3-mejbri', FALSE),
+(17, 'Ferjani Sassi',          'MID', 'Al-Duhail SC',        33, 83,  'player-img--mid4-khedira', FALSE),
+(7,  'Wahbi Khazri',           'FWD', 'Al-Qadsiah',          33, 97,  'player-img--fwd1-khazri', TRUE),
+(9,  'Youssef Msakni',         'FWD', 'Al-Arabi SC',         34, 113, 'player-img--fwd2-msakni', FALSE),
+(10, 'Seifeddine Jaziri',      'FWD', 'Antalyaspor',         31, 59,  'player-img--fwd3-saad', FALSE),
+(11, 'Taha Yassine Khenissi',  'FWD', 'CS Sfaxien',          32, 68,  'player-img--fwd4-khenissi', FALSE);
 
 
 -- Stats Table
