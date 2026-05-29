@@ -75,5 +75,28 @@ $user = current_user();
 
   </div>
 </div>
+  <script>
+    try {
+      localStorage.setItem('lastOrderStatus', 'confirmed');
+      localStorage.setItem('lastOrderId', '<?php echo htmlspecialchars($order_id, ENT_QUOTES, 'UTF-8'); ?>');
 
-<?php include 'includes/footer.php'; ?>
+      // Update the persistent cart: Mark all 'active' items as 'confirmed'
+      var cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      var updated = false;
+      var orderDate = '<?php echo date('Y-m-d H:i:s'); ?>';
+      cart.forEach(function(item) {
+        if (item.status === 'active') {
+          item.status = 'confirmed';
+          item.orderId = '<?php echo $order_id; ?>';
+          item.orderDate = orderDate;
+          updated = true;
+        }
+      });
+      if (updated) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
+    } catch (e) {
+      console.error('Failed to update confirmed items in localStorage', e);
+    }
+  </script>
+  <?php include 'includes/footer.php'; ?>
