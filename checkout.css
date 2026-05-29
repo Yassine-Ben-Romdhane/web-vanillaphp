@@ -232,6 +232,48 @@
   color: var(--variable-collection-primary-color, #e70013);
 }
 
+/* Payment Form Styling */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.checkout-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.checkout-label {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+}
+.checkout-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #fcfcfc;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-size: 14px;
+  color: #0a0a0a;
+  transition: all 0.3s ease;
+}
+.checkout-input:focus {
+  outline: none;
+  border-color: var(--variable-collection-primary-color, #e70013);
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(231, 0, 19, 0.05);
+}
+.checkout-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
 /* Confirmation success block */
 .confirm-success {
   display: flex;

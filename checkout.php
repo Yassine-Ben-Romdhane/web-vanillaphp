@@ -29,6 +29,11 @@ $validated_cart = [];
 foreach ($raw_cart as $item) {
     $name = trim($item['name'] ?? '');
     $qty  = (int)($item['qty'] ?? 0);
+  $size = strtoupper(trim($item['size'] ?? ''));
+  $allowed_sizes = ['S', 'M', 'L', 'XL'];
+  if ($size && !in_array($size, $allowed_sizes, true)) {
+    $size = '';
+  }
     if (!$name || $qty < 1 || !isset($db_products[$name])) continue;
 
     $validated_cart[] = [
@@ -36,6 +41,7 @@ foreach ($raw_cart as $item) {
         'product_name' => $name,
         'unit_price'   => (float)$db_products[$name]['price'],
         'quantity'     => $qty,
+    'size'         => $size,
     ];
 }
 
@@ -78,6 +84,9 @@ $user = current_user();
         <?php foreach ($validated_cart as $item): ?>
         <div class="checkout-item">
           <div class="checkout-item__name"><?php echo htmlspecialchars($item['product_name'], ENT_QUOTES, 'UTF-8'); ?></div>
+          <?php if (!empty($item['size'])): ?>
+          <div class="checkout-item__size">Size: <?php echo htmlspecialchars($item['size'], ENT_QUOTES, 'UTF-8'); ?></div>
+          <?php endif; ?>
           <div class="checkout-item__meta">
             <span class="checkout-item__qty">Qty: <?php echo $item['quantity']; ?></span>
             <span class="checkout-item__price"><?php echo number_format($item['unit_price'] * $item['quantity'], 2); ?> TND</span>
@@ -106,8 +115,32 @@ $user = current_user();
         A confirmation will be sent to your email once placed.
       </p>
 
-      <form method="POST" action="process_order.php">
+      <!-- Payment Details -->
+      <h2 class="checkout-section-title" style="margin-top: 32px;">PAYMENT DETAILS</h2>
+      <form method="POST" action="process_order.php" class="checkout-form">
         <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8'); ?>">
+        
+        <div class="checkout-field">
+          <label class="checkout-label">CARDHOLDER NAME</label>
+          <input type="text" name="card_name" class="checkout-input" placeholder="Aymen Ben Ali" required>
+        </div>
+
+        <div class="checkout-field">
+          <label class="checkout-label">CARD NUMBER</label>
+          <input type="text" name="card_number" class="checkout-input" placeholder="0000 0000 0000 0000" pattern="[0-9]{16}" maxlength="16" required>
+        </div>
+
+        <div class="checkout-row">
+          <div class="checkout-field">
+            <label class="checkout-label">EXPIRY DATE</label>
+            <input type="text" name="card_expiry" class="checkout-input" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" maxlength="5" required>
+          </div>
+          <div class="checkout-field">
+            <label class="checkout-label">CVV</label>
+            <input type="password" name="card_cvv" class="checkout-input" placeholder="•••" pattern="[0-9]{3}" maxlength="3" required>
+          </div>
+        </div>
+
         <button class="checkout-confirm-btn" type="submit">CONFIRM ORDER</button>
       </form>
 

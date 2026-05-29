@@ -65,6 +65,17 @@ $products = $stmt->fetchAll();
           <span class="product-card__year"><?php echo htmlspecialchars($product['year']); ?></span>
           <?php endif; ?>
         </div>
+        <?php if (strtolower($product['category']) === 'jersey'): ?>
+        <div class="product-card__size">
+          <label for="size-<?php echo $product['id']; ?>">SIZE</label>
+          <select id="size-<?php echo $product['id']; ?>" class="product-card__size-select">
+            <option value="S">S</option>
+            <option value="M" selected>M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
+        </div>
+        <?php endif; ?>
         <h3 class="product-card__name"><?php echo nl2br(htmlspecialchars($product['name'])); ?></h3>
         <div class="product-card__footer">
           <span class="product-card__price"><?php echo number_format($product['price'], 2); ?> TND</span>
@@ -84,6 +95,7 @@ $products = $stmt->fetchAll();
       <h2 class="cart-sidebar__title">YOUR CART</h2>
       <button class="cart-sidebar__close" id="cartClose" aria-label="Close cart">&#x2715;</button>
     </div>
+    <div class="cart-sidebar__status" id="cartStatus"></div>
     <div class="cart-sidebar__items" id="cartItems">
       <p class="cart-sidebar__empty">Your cart is empty.</p>
     </div>
