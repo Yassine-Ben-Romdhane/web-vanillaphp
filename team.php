@@ -14,9 +14,9 @@ if ($pdo) {
     $players = $stmtPlayers->fetchAll();
 } else {
     $staff = [
-        ['name' => 'Jalel Kadri', 'role' => 'Head Coach', 'img_class' => 'staff-img--kadri'],
-        ['name' => 'Maher Kanzari', 'role' => 'Assistant Coach', 'img_class' => 'staff-img--kanzari'],
-        ['name' => 'Nabil Maaloul', 'role' => 'Goalkeeping Coach', 'img_class' => 'staff-img--maaloul'],
+        ['name' => 'Montassar Losfar', 'role' => 'Head Coach', 'img_class' => 'staff-avatar--coach1'],
+        ['name' => 'Sofien Losfar', 'role' => 'Assistant Coach', 'img_class' => 'staff-avatar--coach2'],
+        ['name' => 'Ali Zitouni', 'role' => 'Goalkeeper Coach', 'img_class' => 'staff-avatar--coach3'],
     ];
     $players = [
         ['number' => 1,  'name' => 'Aymen Dahmen',    'position' => 'GK',  'club' => 'Espérance ST',   'age' => 28, 'caps' => 34, 'is_captain' => false, 'img_class' => 'player-img--dahmen'],
@@ -44,6 +44,9 @@ if ($totalPlayers > 0) {
     $avgAge = round($sumAge / $totalPlayers);
     $avgCaps = round($sumCaps / $totalPlayers);
 }
+
+// Unique clubs count
+$uniqueClubs = count(array_unique(array_column($players, 'club')));
 ?>
 
 
@@ -141,8 +144,8 @@ if ($totalPlayers > 0) {
       <span class="squad-stat__label">PLAYERS</span>
     </div>
     <div class="squad-stat">
-      <span class="squad-stat__val">8</span> <!-- Hardcoded for now or fetch unique clubs -->
-      <span class="squad-stat__label">NATIONS (CLUBS)</span>
+      <span class="squad-stat__val"><?php echo $uniqueClubs; ?></span>
+      <span class="squad-stat__label">CLUBS</span>
     </div>
     <div class="squad-stat">
       <span class="squad-stat__val"><?php echo $avgCaps; ?></span>

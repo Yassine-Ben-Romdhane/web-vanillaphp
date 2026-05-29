@@ -19,6 +19,7 @@ $booking_error   = '';
 $booking_ref     = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['match_id'])) {
+    verify_csrf();
     $match_id    = (int)$_POST['match_id'];
     $first_name  = trim($_POST['first_name']  ?? '');
     $last_name   = trim($_POST['last_name']   ?? '');
@@ -73,12 +74,11 @@ if ($pdo) {
 if (!$matches) {
     // Fallback fixtures
     $matches = [
-        ['id'=>1,'home_team'=>'Tunisia','away_team'=>'Ivory Coast',  'match_date'=>'2025-06-06 20:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'AFCON Qualifier','available_seats'=>1200,'price_per_ticket'=>30.00,'opponent_flag'=>'🇨🇮'],
-        ['id'=>2,'home_team'=>'Tunisia','away_team'=>'Zambia',        'match_date'=>'2025-06-10 19:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'AFCON Qualifier','available_seats'=>1500,'price_per_ticket'=>25.00,'opponent_flag'=>'🇿🇲'],
-        ['id'=>3,'home_team'=>'Tunisia','away_team'=>'Senegal',       'match_date'=>'2025-09-05 20:00:00','venue'=>'Stade Olympique de Sousse',     'competition'=>'Friendly',       'available_seats'=>900, 'price_per_ticket'=>20.00,'opponent_flag'=>'🇸🇳'],
-        ['id'=>4,'home_team'=>'Tunisia','away_team'=>'Morocco',       'match_date'=>'2025-09-09 20:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'Arab Cup Qual.', 'available_seats'=>2000,'price_per_ticket'=>35.00,'opponent_flag'=>'🇲🇦'],
-        ['id'=>5,'home_team'=>'Tunisia','away_team'=>'Egypt',         'match_date'=>'2025-10-10 19:30:00','venue'=>'Stade Hamdi Agrebi, Radès',     'competition'=>'AFCON Qualifier','available_seats'=>1800,'price_per_ticket'=>30.00,'opponent_flag'=>'🇪🇬'],
-        ['id'=>6,'home_team'=>'Tunisia','away_team'=>'Algeria',       'match_date'=>'2025-11-14 20:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'Friendly',       'available_seats'=>2500,'price_per_ticket'=>40.00,'opponent_flag'=>'🇩🇿'],
+        ['id'=>1,'home_team'=>'Tunisia','away_team'=>'Austria',      'match_date'=>'2026-06-01 19:45:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'Friendly','available_seats'=>1200,'price_per_ticket'=>30.00,'opponent_flag'=>'🇦🇹'],
+        ['id'=>2,'home_team'=>'Tunisia','away_team'=>'Belgium',      'match_date'=>'2026-06-06 14:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'Friendly','available_seats'=>1500,'price_per_ticket'=>25.00,'opponent_flag'=>'🇧🇪'],
+        ['id'=>3,'home_team'=>'Tunisia','away_team'=>'Sweden',       'match_date'=>'2026-06-15 03:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'World Cup - Group F','available_seats'=>900, 'price_per_ticket'=>20.00,'opponent_flag'=>'🇸🇪'],
+        ['id'=>4,'home_team'=>'Tunisia','away_team'=>'Japan',        'match_date'=>'2026-06-21 05:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'World Cup - Group F','available_seats'=>2000,'price_per_ticket'=>35.00,'opponent_flag'=>'🇯🇵'],
+        ['id'=>5,'home_team'=>'Tunisia','away_team'=>'Netherlands',  'match_date'=>'2026-06-26 00:00:00','venue'=>'Stade de Radès, Tunis',         'competition'=>'World Cup - Group F','available_seats'=>2500,'price_per_ticket'=>40.00,'opponent_flag'=>'🇳🇱'],
     ];
 }
 ?>
@@ -202,6 +202,7 @@ if (!$matches) {
 
       <form class="bmodal-form" method="POST" action="book.php">
         <input type="hidden" name="match_id" id="modalMatchId" value="">
+        <input type="hidden" name="csrf_token" value="<?php echo csrf_token(); ?>">
 
         <?php if (is_logged_in()): ?>
         <div class="bmodal-autofill">
@@ -261,25 +262,7 @@ if (!$matches) {
     </div>
   </div>
 
-  <!-- Info Strip -->
-  <div class="book-info-strip">
-    <div class="binfo-item">
-      <span class="binfo-icon">🔒</span>
-      <span class="binfo-text">Secure Payment</span>
-    </div>
-    <div class="binfo-item">
-      <span class="binfo-icon">📧</span>
-      <span class="binfo-text">E-Ticket by Email</span>
-    </div>
-    <div class="binfo-item">
-      <span class="binfo-icon">↩️</span>
-      <span class="binfo-text">Free Cancellation 48h Prior</span>
-    </div>
-    <div class="binfo-item">
-      <span class="binfo-icon">🎫</span>
-      <span class="binfo-text">Up to 10 Tickets / Booking</span>
-    </div>
-  </div>
+ 
 
 <script>
 var currentPrice = 0;

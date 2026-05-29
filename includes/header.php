@@ -23,7 +23,6 @@
       </button>
       <div class="navbar-2" id="navMenu">
         <a href="index.php"><div class="text-wrapper-3 <?php echo ($active_page == 'home') ? 'nav-active' : ''; ?>">HOME</div></a>
-        <a href="stats.php"><div class="text-wrapper-3 <?php echo ($active_page == 'stats') ? 'nav-active' : ''; ?>">STATS</div></a>
         <a href="team.php"><div class="text-wrapper-3 <?php echo ($active_page == 'team') ? 'nav-active' : ''; ?>">TEAM</div></a>
         <a href="book.php"><div class="text-wrapper-3 <?php echo ($active_page == 'book') ? 'nav-active' : ''; ?>">BOOK</div></a>
         <a href="store.php"><div class="text-wrapper-3 <?php echo ($active_page == 'store') ? 'nav-active' : ''; ?>">STORE</div></a>

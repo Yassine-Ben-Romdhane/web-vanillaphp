@@ -9,7 +9,6 @@ A fan website for the Tunisian national football team built with plain PHP and C
 | Page | URL | Description |
 |---|---|---|
 | Home | `index.php` | History of the national team with scroll-reveal sections |
-| Stats | `stats.php` | FIFA ranking, records, recent form, and honors |
 | Team | `team.php` | Full squad with position filter, staff section, and squad stats |
 | Book of Legends | `book.php` | Historical timeline + legendary players |
 | Store | `store.php` | Merchandise shop with a cart sidebar (localStorage-based) |
@@ -23,8 +22,9 @@ A fan website for the Tunisian national football team built with plain PHP and C
 
 ```
 /
+├── auth.php                # Session helpers (is_logged_in, csrf_token, etc.)
+├── db.php                  # PDO connection (sets $pdo or null on failure)
 ├── index.php               # Home page
-├── stats.php               # Stats & honors page
 ├── team.php                # Squad page
 ├── book.php                # Book of legends page
 ├── store.php               # Store page
@@ -36,14 +36,6 @@ A fan website for the Tunisian national football team built with plain PHP and C
 ├── process_order.php       # POST handler that commits the order to the DB
 ├── order_confirmation.php  # Receipt shown after a successful order
 │
-├── auth.php                # Session helpers (is_logged_in, csrf_token, etc.)
-├── db.php                  # PDO connection (sets $pdo or null on failure)
-│
-├── includes/
-│   ├── header.php          # HTML <head>, navbar, opens the page wrapper
-│   └── footer.php          # Closes the wrapper, loads optional JS
-│
-├── schema.sql              # MySQL version of the schema
 ├── schema_supabase.sql     # PostgreSQL version (what's actually running)
 │
 ├── style.css               # Main layout and component styles
@@ -86,9 +78,6 @@ The connection is in `db.php`. It uses `define()` for the constants and PDO with
 
 **`staff`** — coaching staff shown on the team page
 
-**`stats`** — the 4 quick-stat boxes on the stats page (label, value, trend)
-
-**`honors`** — AFCON titles and runner-up finishes shown in the honors grid
 
 **`legends`** — legendary players shown on the Book of Legends page
 
@@ -211,7 +200,7 @@ If any insert fails, `rollBack()` is called in the `catch`. This guarantees you 
 | `??` null coalescing | Everywhere — `$_POST['email'] ?? ''` |
 | `try` / `catch (PDOException $e)` | `db.php`, `register_action.php`, `process_order.php` |
 | PDO `prepare()` + `execute()` | All DB writes and user lookups |
-| PDO `query()` + `fetchAll()` | `store.php`, `team.php`, `stats.php`, `book.php` |
+| PDO `query()` + `fetchAll()` | `store.php`, `team.php`, `book.php` |
 | `PDO::FETCH_ASSOC` | Set globally in `db.php` options |
 | `implode()` | `checkout.php` (building IN placeholders) |
 | `array_fill()` | `checkout.php` (building IN placeholders) |
