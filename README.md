@@ -50,7 +50,7 @@ A fan website for the Tunisian national football team built with plain PHP and C
 
 ## Database (PostgreSQL via Supabase)
 
-The connection is in `db.php`. It uses `define()` for the constants and PDO with `ERRMODE_EXCEPTION`. If the connection fails, `$pdo` is set to `null` — every page checks for this and falls back to hardcoded mock data so the site stays browsable without a live DB.
+The connection is in `db.php`. Configure `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, and `DB_PASS` as environment variables (see `.env.example`). Never commit real credentials. PDO uses `ERRMODE_EXCEPTION`; if connection fails, `$pdo` is set to `null` and public pages fall back to mock data.
 
 ### Tables
 
@@ -227,4 +227,4 @@ Open `http://localhost:8080`. If the Supabase database is unreachable, all displ
 
 ## Running with the database
 
-The project connects to a Supabase (PostgreSQL) instance. The credentials are in `db.php`. To set up a fresh database, run `schema_supabase.sql` in the Supabase SQL Editor — it creates all tables and inserts the initial data.
+The project connects to a Supabase (PostgreSQL) instance using environment variables. Rotate any database password that was previously committed, then set the new `DB_PASS` in your local environment or deployment platform. To set up a fresh database, run `schema_supabase.sql` in the Supabase SQL Editor — it creates all tables and inserts the initial data.

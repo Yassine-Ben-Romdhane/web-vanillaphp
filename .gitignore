@@ -1,2 +1,5 @@
 .claude
 docs/
+.env
+.env.*
+!.env.example
